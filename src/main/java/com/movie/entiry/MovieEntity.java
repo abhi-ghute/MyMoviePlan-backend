@@ -1,12 +1,22 @@
-package com.movie.dto;
+package com.movie.entiry;
 
 import java.util.List;
 
-import com.movie.entiry.CastEntity;
-import com.movie.entiry.CrewEntity;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
-public class MovieDto {
+@Entity
+public class MovieEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String name;
 	private String classicPrice;
 	private String classicPlusPrice;
@@ -16,7 +26,11 @@ public class MovieDto {
 	private String description;
 	private String image;
 	private String releaseDate;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "movie_id")
 	private List<CastEntity> cast;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "movie_id")
 	private List<CrewEntity> crew;
 	private String visuals;
 	private String status="enable";
@@ -74,6 +88,12 @@ public class MovieDto {
 	}
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public List<CastEntity> getCast() {
 		return cast;

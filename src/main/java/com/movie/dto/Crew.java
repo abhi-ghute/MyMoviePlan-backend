@@ -5,6 +5,7 @@ public class Crew {
 	private String name;
 	private String role;
 	private String image;
+	private String imageData;
 	
 	public String getName() {
 		return name;
@@ -23,6 +24,12 @@ public class Crew {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public void setImageData(String imageData) {
+		this.imageData = imageData;
+	}
+	public String getImageData() {
+		return imageData;
 	}
 	
 }
