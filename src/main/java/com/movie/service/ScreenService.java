@@ -16,7 +16,6 @@ public class ScreenService {
 	
 	public ScreenDto getSeats(String screen) {
 		ScreenEntity entity = repo.findByScreenNumber(screen);
-		System.out.println("hhh");
 		ScreenDto screenDto = new ScreenDto();
 		BeanUtils.copyProperties(entity, screenDto);
 		
