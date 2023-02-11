@@ -1,5 +1,6 @@
 package com.movie.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movie.dto.MovieDto;
+import com.movie.dto.ShowDto;
 import com.movie.entiry.MovieEntity;
+import com.movie.entiry.ShowEntity;
 import com.movie.service.MovieService;
 
 @RestController
@@ -39,4 +42,28 @@ public class MovieController {
 		return service.updateStatus(status,id);
 	}
 	
+	@GetMapping("showEnableMovies")
+	public List<MovieEntity> showEnableMovies() {
+		return service.showEnableMovies();
+	}
+	
+	@PostMapping("addShow")
+	public String addShow(@RequestBody ShowDto showDto) {
+		return service.addShow(showDto);
+	}
+	
+	@GetMapping("showList")
+	public List<MovieEntity> showList() throws Exception{
+		return service.showList();
+	}
+	
+	@GetMapping("selectMovie")
+	public MovieEntity selectMovie(@RequestParam Integer id){
+		return service.selectMovie(id);
+	}
+	
+	@GetMapping("getUpcomming")
+	public List<MovieEntity> getUpcomming() throws ParseException{
+		return service.getUpcomming();
+	}
 }

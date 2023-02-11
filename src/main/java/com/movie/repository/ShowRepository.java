@@ -3,12 +3,13 @@ package com.movie.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.movie.entiry.MovieEntity;
+import com.movie.entiry.ShowEntity;
 
 @Repository
-public interface MovieRepository extends JpaRepository<MovieEntity, Integer> {
- 
-	public List<MovieEntity> findByStatus(String status);
+public interface ShowRepository extends JpaRepository<ShowEntity, Integer>{
+
 }
+
