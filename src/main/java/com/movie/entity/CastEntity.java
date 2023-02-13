@@ -1,4 +1,4 @@
-package com.movie.entiry;
+package com.movie.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,13 +9,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class CrewEntity {
+public class CastEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer crewId;
+	private Integer castID;
 	private String name;
-	private String role;
+	private String movieName;
 	private String image;
 	@Column(columnDefinition ="LONGTEXT")
 	private String imageData;
@@ -26,11 +26,11 @@ public class CrewEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getRole() {
-		return role;
+	public String getMovieName() {
+		return movieName;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
 	}
 	public String getImage() {
 		return image;
@@ -44,11 +44,10 @@ public class CrewEntity {
 	public String getImageData() {
 		return imageData;
 	}
-	public Integer getCrewId() {
-		return crewId;
+	public Integer getCastID() {
+		return castID;
 	}
-	public void setCrewId(Integer crewId) {
-		this.crewId = crewId;
+	public void setCastID(Integer castID) {
+		this.castID = castID;
 	}
-	
 }

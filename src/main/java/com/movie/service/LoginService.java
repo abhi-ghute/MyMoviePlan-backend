@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie.dto.LoginDto;
-import com.movie.entiry.UserEntity;
+import com.movie.entity.UserEntity;
 //import com.movie.repository.AdminRepository;
 import com.movie.repository.UserRepository;
 
@@ -21,8 +21,6 @@ public class LoginService {
 		
 		
 		UserEntity entity = userRepo.findByEmailAndPassword(login.getUserName(), login.getPassword());
-		
-		System.out.println(entity.getFirstName());
 		return entity;
 		
 	}

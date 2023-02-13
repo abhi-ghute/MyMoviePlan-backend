@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie.dto.UserDto;
-import com.movie.entiry.UserEntity;
+import com.movie.entity.UserEntity;
 import com.movie.repository.UserRepository;
 
 @Service

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.movie.dto.MovieDto;
 import com.movie.dto.ShowDto;
-import com.movie.entiry.MovieEntity;
-import com.movie.entiry.ShowEntity;
+import com.movie.entity.MovieEntity;
+import com.movie.entity.ShowEntity;
 import com.movie.service.MovieService;
 
 @RestController
@@ -66,4 +66,15 @@ public class MovieController {
 	public List<MovieEntity> getUpcomming() throws ParseException{
 		return service.getUpcomming();
 	}
+	
+	@GetMapping("getShowDetails")
+	public ShowEntity getShowDetails(@RequestParam String id) throws ParseException{
+		return service.getShowDetails(id);
+	}
+	
+	@GetMapping("getShow")
+	public ShowEntity getShow(@RequestParam Integer id){
+		return service.getShow(id);
+	}
+	
 }

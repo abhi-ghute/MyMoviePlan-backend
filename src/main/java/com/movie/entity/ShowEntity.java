@@ -1,4 +1,4 @@
-package com.movie.entiry;
+package com.movie.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

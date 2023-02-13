@@ -17,8 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.movie.dto.MovieDto;
 import com.movie.dto.ShowDto;
-import com.movie.entiry.MovieEntity;
-import com.movie.entiry.ShowEntity;
+import com.movie.entity.MovieEntity;
+import com.movie.entity.ShowEntity;
 import com.movie.repository.MovieRepository;
 import com.movie.repository.ShowRepository;
 
@@ -27,6 +27,7 @@ import jakarta.transaction.Transactional;
 @Service
 public class MovieService {
 
+	List<ShowEntity> originalMovieList;
 	@Autowired
 	MovieRepository repo;
 
@@ -91,7 +92,7 @@ public class MovieService {
 	public List<MovieEntity> showList() throws Exception {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		List<ShowEntity> showList = showRepo.findAll();
-		List<ShowEntity> originalMovieList = new ArrayList<>(showList);
+		originalMovieList = new ArrayList<>(showList);
 		
 		List<Integer> ids = new ArrayList<>();
 		
@@ -140,16 +141,35 @@ public class MovieService {
 	
 		
 		List<MovieEntity> movieList = repo.findAll();
-		List<MovieEntity> originalMovieList = new ArrayList<>(movieList);
+		List<MovieEntity> previousoriginalMovieList = new ArrayList<>();
+		List<ShowEntity> showList = showRepo.findAll();
 		
 		for (MovieEntity m : movieList) {
-			LocalDate futureDate = LocalDate.parse(m.getReleaseDate());
-		    Period difference = Period.between(today, futureDate);
-		    System.out.println(difference.getDays());
-			if(difference.getDays() < 1) {
-				originalMovieList.remove(m);
+			for(ShowEntity s:showList) {
+				if(s.getId().equalsIgnoreCase(m.getId()+"")) {
+					LocalDate futureDate = LocalDate.parse(m.getReleaseDate());
+				    Period difference = Period.between(today, futureDate);
+				    System.out.println(difference.getDays());
+					if(difference.getDays() >= 1) {
+						previousoriginalMovieList.add(m);
+					}
+				}
+			}
+			
+		}
+		return previousoriginalMovieList;
+	}
+	
+	public ShowEntity getShowDetails(String id) {
+		for(ShowEntity s: originalMovieList) {
+			if(s.getId().equals(id)) {
+				return s;
 			}
 		}
-		return originalMovieList;
+		return null;
+	}
+	
+	public ShowEntity getShow(Integer id) {
+		return showRepo.findById(id).get();
 	}
 }

@@ -2,8 +2,8 @@ package com.movie.dto;
 
 import java.util.List;
 
-import com.movie.entiry.CastEntity;
-import com.movie.entiry.CrewEntity;
+import com.movie.entity.CastEntity;
+import com.movie.entity.CrewEntity;
 
 public class MovieDto {
 

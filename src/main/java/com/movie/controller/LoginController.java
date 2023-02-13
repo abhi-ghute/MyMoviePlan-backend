@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movie.dto.LoginDto;
-import com.movie.entiry.UserEntity;
+import com.movie.entity.UserEntity;
 import com.movie.service.LoginService;
 
 @RestController

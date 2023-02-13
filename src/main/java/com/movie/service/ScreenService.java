@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie.dto.ScreenDto;
-import com.movie.entiry.ScreenEntity;
+import com.movie.entity.ScreenEntity;
 import com.movie.repository.ScreenReopository;
 
 @Service
